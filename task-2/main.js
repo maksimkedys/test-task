@@ -6,13 +6,18 @@ const restoreBtn = document.querySelector(".restore-btn");
 const body = document.querySelector("body");
 
 function drawImages() {
+  const hiddenImages = getHiddenImages();
+  gallery.innerHTML = "";
+
   for (let i = 1; i <= 12; i++) {
-    gallery.innerHTML += `
+    if (!hiddenImages.includes(i)) {
+      gallery.innerHTML += `
       <li class="gallery__item">
         <img class="gallery__image" src="images/${i}.jpg" alt="Image ${i}">
-        <button class="gallery__button button">×</button>
+        <button class="gallery__button button" data-image-id="${i}">×</button>
       </li>
       `;
+    }
   }
 }
 
@@ -48,12 +53,6 @@ function closeModal() {
   modalImage.src = "";
 }
 
-function handleImageClick(event) {
-  if (event.target.classList.contains("gallery__image")) {
-    openModal(event);
-  }
-}
-
 function getHiddenImages() {
   return JSON.parse(localStorage.getItem("hiddenImages")) || [];
 }
@@ -62,11 +61,41 @@ function setHiddenImages(images) {
   localStorage.setItem("hiddenImages", JSON.stringify(images));
 }
 
+function deleteImage(imageId) {
+  const hiddenImages = getHiddenImages();
+  console.log(imageId);
+  if (!hiddenImages.includes(imageId)) {
+    setHiddenImages([...hiddenImages, imageId]);
+    drawImages();
+  }
+}
+
+function handelResetImages() {
+  localStorage.removeItem("hiddenImages");
+  drawImages();
+}
+
+function handleImageClick(event) {
+  if (event.target.classList.contains("gallery__image")) {
+    openModal(event);
+  }
+}
+
+function handleDeleteClick(event) {
+  if (event.target.classList.contains("gallery__button")) {
+    const imageId = +event.target.dataset.imageId;
+    deleteImage(imageId);
+  }
+}
+
 function init() {
   drawImages();
   updateInfo();
+
   gallery.addEventListener("click", handleImageClick);
+  gallery.addEventListener("click", handleDeleteClick);
   closeBtn.addEventListener("click", closeModal);
+  restoreBtn.addEventListener("click", handelResetImages);
   modal.addEventListener("click", closeModal);
 }
 
