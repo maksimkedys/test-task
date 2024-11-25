@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.flag {
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+
+.flag:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.ukraine {
+  background-image: linear-gradient(180deg, #02529c 50%, #ffff00 50%);
+}
+
+.japan {
+  background-color: #ffffff;
+}
+
+.japan::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #dc1e35;
+}
+
+.iceland {
+  background-color: #02529c;
+}
+
+.iceland-white {
+  position: absolute;
+  left: 80px;
+  width: 45px;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.iceland::before {
+  content: "";
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  height: 45px;
+  background-color: #ffffff;
+}
+
+.iceland-red {
+  position: absolute;
+  left: 10px;
+  width: 25px;
+  height: 100%;
+  background-color: #dc1e35;
+}
+
+.iceland::after {
+  content: "";
+  position: absolute;
+  top: 90px;
+  width: 100%;
+  height: 25px;
+  background-color: #dc1e35;
+}
+
+.czech {
+  background-image: linear-gradient(180deg, #ffffff 50%, #dc1e35 50%);
+}
+
+.czech::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-left: 130px solid #02529c;
+}
