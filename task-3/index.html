@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <h1>Пошук університетів</h1>
+  <form class="form">
+    <label class="form__label">Введіть країну:
+      <input class="form__input" type="text" name="country" placeholder="Ukraine" required>
+    </label>
+    <div class="form__buttons">
+      <button class="form__button submit" type="submit">Відправити</button>
+      <button class="form__button reset" type="reset">Скинути</button>
+    </div>
+  </form>
+  <p class="error"></p>
+  <table class="table hidden">
+    <thead class="table__header">
+      <tr class="table__row">
+        <th class="table__column">№</th>
+        <th class="table__column">Назва</th>
+        <th class="table__column">Країна</th>
+        <th class="table__column">Сайт</th>
+      </tr>
+    </thead>
+    <tbody class="table__body"></tbody>
+  </table>
+</body>
+
+</html>
