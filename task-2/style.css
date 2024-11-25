@@ -19,6 +19,21 @@ body {
   overflow: hidden;
 }
 
+.button {
+  padding: 10px 20px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #dc1e35;
+}
+
 .info {
   padding: 20px;
   margin-bottom: 20px;
@@ -32,19 +47,24 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   width: 80%;
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.gallery__item {
+  justify-self: center;
 }
 
 .gallery__image {
   width: 200px;
   height: 200px;
-  justify-self: center;
   object-fit: cover;
   border: 5px solid #333333;
   border-radius: 50%;
   transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.gallery__image:nth-child(4n + 1) {
+.gallery__item:nth-child(4n + 1) .gallery__image {
   border-color: #dc1e35;
 }
 
@@ -53,11 +73,17 @@ body {
   transform: rotate(45deg);
 }
 
+.gallery__button {
+  display: block;
+  margin: 5px auto 0;
+  padding: 5px 10px;
+}
+
 @media (max-width: 900px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
   }
-  .gallery__image:nth-child(2n + 1) {
+  .gallery__item:nth-child(2n + 1) .gallery__image {
     border-color: #dc1e35;
   }
 }
@@ -66,7 +92,7 @@ body {
   .gallery {
     grid-template-columns: 1fr;
   }
-  .gallery__image:nth-child(n) {
+  .gallery__item:nth-child(n) .gallery__image {
     border-color: #333333;
   }
 }
@@ -108,16 +134,4 @@ body {
 .modal__close {
   display: block;
   margin: 0 auto;
-  padding: 10px 20px;
-  background-color: #dc1e35;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.modal__close:hover {
-  background-color: #333333;
 }

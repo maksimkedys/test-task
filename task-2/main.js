@@ -2,15 +2,17 @@ const gallery = document.querySelector(".gallery");
 const modal = document.querySelector(".modal");
 const modalImage = document.querySelector(".modal__image");
 const closeBtn = document.querySelector(".modal__close");
+const restoreBtn = document.querySelector(".restore-btn");
 const body = document.querySelector("body");
 
 function drawImages() {
   for (let i = 1; i <= 12; i++) {
-    const image = document.createElement("img");
-    image.classList.add("gallery__image");
-    image.src = `images/${i}.jpg`;
-    image.alt = `Image ${i}`;
-    gallery.appendChild(image);
+    gallery.innerHTML += `
+      <li class="gallery__item">
+        <img class="gallery__image" src="images/${i}.jpg" alt="Image ${i}">
+        <button class="gallery__button button">×</button>
+      </li>
+      `;
   }
 }
 
@@ -50,6 +52,14 @@ function handleImageClick(event) {
   if (event.target.classList.contains("gallery__image")) {
     openModal(event);
   }
+}
+
+function getHiddenImages() {
+  return JSON.parse(localStorage.getItem("hiddenImages")) || [];
+}
+
+function setHiddenImages(images) {
+  localStorage.setItem("hiddenImages", JSON.stringify(images));
 }
 
 function init() {
