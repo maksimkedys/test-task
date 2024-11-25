@@ -10,6 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #f2f2f2;
+  gap: 20px;
   padding: 20px;
 }
 
@@ -17,10 +18,6 @@ body {
   position: relative;
   width: 300px;
   height: 200px;
-}
-
-.flag:not(:last-child) {
-  margin-bottom: 20px;
 }
 
 .ukraine {
